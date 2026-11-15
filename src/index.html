@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OBS Theme Studio - Simple Mode</title>
+  <meta name="description" content="Visual theme creator for OBS Studio based on Yami.obt. Click any OBS element to change its linked theme variable.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2245%22 fill=%22%23284cb8%22/><circle cx=%2250%22 cy=%2250%22 r=%2222%22 fill=%22%23ffffff%22/></svg>">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/obs-mockup.css">
+</head>
+<body>
+
+  <!-- Top App Navigation Bar -->
+  <header class="app-header">
+    <div class="brand-section">
+      <div class="brand-title-group">
+        <h1 id="app-title-thingo">OBS Theme Studio vX.X.X</h1>
+        <div class="brand-sub">Theme customizer for OBS Studio (Yami.obt variant editor)</div>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <button id="btn-guide" class="btn btn-default" title="How to install in OBS">
+        Installation Guide
+      </button>
+      <button id="btn-reset" class="btn btn-default" title="Reset all variables to default Yami values">
+        Reset to Default
+      </button>
+      <button id="btn-export" class="btn btn-primary" title="Download OBS .ovt theme file">
+        Export Theme (.ovt)
+      </button>
+    </div>
+  </header>
+
+  <!-- Main App Layout -->
+  <main class="app-main">
+
+    <!-- OBS Mockup -->
+    <section class="mockup-viewport">
+
+      <!-- OBS Window -->
+      <div class="obs-window" id="obs-window">
+        
+        <!-- Window Top Title / Menu Bar -->
+        <nav class="obs-menu-bar" data-var="--bg_window" title="Window & Menu Background (--bg_window)">
+          <span class="var-tag">--bg_window</span>
+          <div class="obs-menu-item active-selection" data-var="--primary" title="Active Menu Selection (--primary)">
+            File
+          </div>
+          <div class="obs-menu-item">Edit</div>
+          <div class="obs-menu-item">View</div>
+          <div class="obs-menu-item">Docks</div>
+          <div class="obs-menu-item">Profile</div>
+          <div class="obs-menu-item">Scene Collection</div>
+          <div class="obs-menu-item">Tools</div>
+          <div class="obs-menu-item">Help</div>
+        </nav>
+
+        <!-- OBS Workspace Body -->
+        <div class="obs-workspace" data-var="--bg_window" title="Window & Menu Background (--bg_window)">
+          <span class="var-tag">--bg_window</span>
+
+          <!-- Preview Canvas -->
+          <div class="obs-preview-container" data-var="--bg_preview" title="Preview Canvas Backdrop (--bg_preview)">
+            <span class="var-tag">--bg_preview</span>
+            
+            <div class="obs-preview-header">
+              <span>Preview (Main Stream Canvas)</span>
+            </div>
+
+            <div class="obs-preview-viewport">
+              <div class="obs-screen-canvas">
+                <div class="mock-game-bg">
+                  <div>
+                    <div class="mock-game-title">PREVIEW</div>
+                    <div class="mock-subtext">Click any OBS element to inspect its linked variable</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Docks Area - Row 1 -->
+          <div class="obs-docks-container">
+
+            <!-- Scenes Dock -->
+            <div class="obs-dock" data-var="--bg_base" title="Dock & Panels Background (--bg_base)">
+              <div class="obs-dock-titlebar" data-var="--button_bg" title="Buttons & Dock Titlebars (--button_bg)">
+                <span class="var-tag">--button_bg</span>
+                <span>Scenes</span>
+                <div class="obs-dock-title-icons">
+                  <span>🗗</span>
+                </div>
+              </div>
+              <div class="obs-dock-body" data-var="--bg_base" title="Dock & Panels Background (--bg_base)">
+                <div class="obs-list" data-var="--bg_base" title="Docks, Lists & Mixer Background (--bg_base)">
+                  <span class="var-tag">--bg_base</span>
+                  <div class="obs-list-item">1. Starting Soon</div>
+                  <div class="obs-list-item selected" data-var="--primary" title="Active Selection Highlight (--primary)">
+                    <span class="var-tag">--primary</span>
+                    <span>2. Main Gameplay</span>
+                  </div>
+                  <div class="obs-list-item">3. Fullcam Chat</div>
+                  <div class="obs-list-item">4. BRB Screen</div>
+                  <div class="obs-list-item">5. Stream Ending</div>
+                </div>
+                <div class="obs-toolbar-row" data-var="--button_bg_hover" title="Button & Tool Button Hover (--button_bg_hover)">
+                  <span class="var-tag">--button_bg_hover</span>
+                  <button class="obs-tool-btn" title="Add">➕</button>
+                  <button class="obs-tool-btn" title="Remove">➖</button>
+                  <button class="obs-tool-btn" title="Move Up">▲</button>
+                  <button class="obs-tool-btn" title="Move Down">▼</button>
+                  <button class="obs-tool-btn" title="Grid View">⊞</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sources Dock -->
+            <div class="obs-dock" data-var="--bg_base" title="Dock & Panels Background (--bg_base)">
+              <div class="obs-dock-titlebar" data-var="--button_bg" title="Buttons & Dock Titlebars (--button_bg)">
+                <span class="var-tag">--button_bg</span>
+                <span>Sources</span>
+                <div class="obs-dock-title-icons">
+                  <span>🗗</span>
+                </div>
+              </div>
+              <div class="obs-dock-body" data-var="--bg_base" title="Dock & Panels Background (--bg_base)">
+                <div class="obs-list" data-var="--bg_base" title="Docks, Lists & Mixer Background (--bg_base)">
+                  <span class="var-tag">--bg_base</span>
+                  <div class="obs-list-item">
+                    <span>Facecam HD Pro</span>
+                    <div class="obs-list-item-icons"><span>👁</span><span>🔒</span></div>
+                  </div>
+                  <div class="obs-list-item selected" data-var="--primary" title="Active Selection Highlight (--primary)">
+                    <span class="var-tag">--primary</span>
+                    <span>Game Capture</span>
+                    <div class="obs-list-item-icons"><span>👁</span><span>🔒</span></div>
+                  </div>
+                  <div class="obs-list-item">
+                    <span>Stream Alerts Overlay</span>
+                    <div class="obs-list-item-icons"><span>👁</span><span>🔒</span></div>
+                  </div>
+                </div>
+                <div class="obs-toolbar-row" data-var="--button_bg_hover" title="Button & Tool Button Hover (--button_bg_hover)">
+                  <span class="var-tag">--button_bg_hover</span>
+                  <button class="obs-tool-btn" title="Add Source">➕</button>
+                  <button class="obs-tool-btn" title="Remove Source">➖</button>
+                  <button class="obs-tool-btn" title="Source Properties">⚙</button>
+                  <button class="obs-tool-btn" title="Move Up">▲</button>
+                  <button class="obs-tool-btn" title="Move Down">▼</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Audio Mixer Dock -->
+            <div class="obs-dock" data-var="--bg_base" title="Dock & Panels Background (--bg_base)">
+              <div class="obs-dock-titlebar" data-var="--button_bg" title="Buttons & Dock Titlebars (--button_bg)">
+                <span class="var-tag">--button_bg</span>
+                <span>Audio Mixer</span>
+                <div class="obs-dock-title-icons">
+                  <span>🗗</span>
+                </div>
+              </div>
+              <div class="obs-dock-body" data-var="--bg_base" title="Dock & Panels Background (--bg_base)">
+                <span class="var-tag">--bg_base</span>
+                
+                <!-- Desktop Audio Channel -->
+                <div class="obs-audio-channel" data-var="--bg_base">
+                  <div class="obs-audio-label-row">
+                    <span>Desktop Audio</span>
+                    <span>-4.2 dB</span>
+                  </div>
+                  <div class="obs-audio-meter-track">
+                    <div class="obs-audio-meter-fill" style="width: 80%;"></div>
+                  </div>
+                  <div class="obs-slider-container">
+                    <button class="obs-audio-btn" data-var="--button_bg_hover" title="Button & Tool Button Hover (--button_bg_hover)">🔊</button>
+                    <div class="obs-fader-track">
+                      <div class="obs-fader-handle" style="left: 78%;" data-var="--primary_light" title="Slider Fader Knob (--primary_light)"></div>
+                    </div>
+                    <button class="obs-audio-btn" data-var="--button_bg_hover" title="Button & Tool Button Hover (--button_bg_hover)">⚙</button>
+                  </div>
+                </div>
+
+                <!-- Mic Audio Channel -->
+                <div class="obs-audio-channel" data-var="--bg_base">
+                  <div class="obs-audio-label-row">
+                    <span>Mic/Aux Audio</span>
+                    <span>-12.0 dB</span>
+                  </div>
+                  <div class="obs-audio-meter-track">
+                    <div class="obs-audio-meter-fill" style="width: 60%;"></div>
+                  </div>
+                  <div class="obs-slider-container">
+                    <button class="obs-audio-btn" data-var="--button_bg_hover" title="Button & Tool Button Hover (--button_bg_hover)">🎙️</button>
+                    <div class="obs-fader-track">
+                      <div class="obs-fader-handle" style="left: 60%;" data-var="--primary_light" title="Slider Fader Knob (--primary_light)"></div>
+                    </div>
+                    <button class="obs-audio-btn" data-var="--button_bg_hover" title="Button & Tool Button Hover (--button_bg_hover)">⚙</button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Scene Transitions Dock -->
+            <div class="obs-dock" data-var="--bg_base" title="Dock & Panels Background (--bg_base)">
+              <div class="obs-dock-titlebar" data-var="--button_bg" title="Buttons & Dock Titlebars (--button_bg)">
+                <span class="var-tag">--button_bg</span>
+                <span>Scene Transitions</span>
+                <div class="obs-dock-title-icons">
+                  <span>🗗</span>
+                </div>
+              </div>
+              <div class="obs-dock-body" data-var="--bg_base" title="Dock & Panels Background (--bg_base)">
+                <span class="var-tag">--bg_base</span>
+                <div class="obs-form-group">
+                  <label class="obs-form-label">Transition</label>
+                  <select class="obs-select">
+                    <option>Fade</option>
+                    <option>Cut</option>
+                    <option>Swipe</option>
+                    <option>Slide</option>
+                    <option>Stinger</option>
+                  </select>
+                </div>
+                <div class="obs-form-group">
+                  <label class="obs-form-label">Duration</label>
+                  <input type="text" class="obs-input" value="300 ms" readonly>
+                </div>
+              </div>
+            </div>
+
+            <!-- Controls Dock -->
+            <div class="obs-dock" data-var="--bg_base" title="Dock & Panels Background (--bg_base)">
+              <div class="obs-dock-titlebar" data-var="--button_bg" title="Buttons & Dock Titlebars (--button_bg)">
+                <span class="var-tag">--button_bg</span>
+                <span>Controls</span>
+                <div class="obs-dock-title-icons">
+                  <span>🗗</span>
+                </div>
+              </div>
+              <div class="obs-dock-body" data-var="--bg_base" title="Dock & Panels Background (--bg_base)">
+                <span class="var-tag">--bg_base</span>
+                <div class="obs-controls-stack" data-var="--button_bg" title="Buttons & Dock Titlebars (--button_bg)">
+                  <span class="var-tag">--button_bg</span>
+                  <button class="obs-btn obs-btn-primary">Start Streaming</button>
+                  <button class="obs-btn">Start Recording</button>
+                  <button class="obs-btn">Start Virtual Camera</button>
+                  <button class="obs-btn">Studio Mode</button>
+                  <button class="obs-btn">Settings</button>
+                  <button class="obs-btn">Exit</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Docks Area - Row 2 -->
+          <div class="obs-docks-container secondary-docks">
+
+            <!-- Stats Dock -->
+            <div class="obs-dock" data-var="--bg_base" title="Dock & Panels Background (--bg_base)">
+              <div class="obs-dock-titlebar" data-var="--button_bg" title="Buttons & Dock Titlebars (--button_bg)">
+                <span class="var-tag">--button_bg</span>
+                <span>Stats</span>
+                <div class="obs-dock-title-icons">
+                  <span>🗗</span>
+                </div>
+              </div>
+              <div class="obs-dock-body" data-var="--bg_base" title="Dock & Panels Background (--bg_base)">
+                <span class="var-tag">--bg_base</span>
+                <div class="obs-stats-table">
+                  <p>I cannot be fucked doing this</p>
+                </div>
+                <!-- In OBS, Stats Reset button uses --button_bg -->
+                <button class="obs-btn obs-btn-sm" data-var="--button_bg" title="Buttons & Dock Titlebars (--button_bg)" style="margin-top: auto;">
+                  Reset Stats
+                </button>
+              </div>
+            </div>
+
+            <!-- The rest of these docks can't be modified, only the dock bar 'cause fuckass web-based docks -->
+            <!-- Stream Information Dock -->
+            <div class="obs-dock">
+              <div class="obs-dock-titlebar" data-var="--button_bg" title="Buttons & Dock Titlebars (--button_bg)">
+                <span class="var-tag">--button_bg</span>
+                <span>Stream Information</span>
+                <div class="obs-dock-title-icons">
+                  <span>🗗</span>
+                  <span>✕</span>
+                </div>
+              </div>
+              <div class="obs-dock-body">
+              </div>
+            </div>
+
+            <!-- Twitch Chat Dock -->
+            <div class="obs-dock">
+              <div class="obs-dock-titlebar" data-var="--button_bg" title="Buttons & Dock Titlebars (--button_bg)">
+                <span class="var-tag">--button_bg</span>
+                <span>Twitch Chat</span>
+                <div class="obs-dock-title-icons">
+                  <span>🗗</span>
+                  <span>✕</span>
+                </div>
+              </div>
+              <div class="obs-dock-body">
+              </div>
+            </div>
+
+            <!-- Twitch Activity Feed Dock -->
+            <div class="obs-dock">
+              <div class="obs-dock-titlebar" data-var="--button_bg" title="Buttons & Dock Titlebars (--button_bg)">
+                <span class="var-tag">--button_bg</span>
+                <span>Twitch Activity Feed</span>
+                <div class="obs-dock-title-icons">
+                  <span>🗗</span>
+                  <span>✕</span>
+                </div>
+              </div>
+              <div class="obs-dock-body">
+              </div>
+            </div>
+
+            <!-- Twitch Stats Dock -->
+            <div class="obs-dock">
+              <div class="obs-dock-titlebar" data-var="--button_bg" title="Buttons & Dock Titlebars (--button_bg)">
+                <span class="var-tag">--button_bg</span>
+                <span>Twitch Stats</span>
+                <div class="obs-dock-title-icons">
+                  <span>🗗</span>
+                  <span>✕</span>
+                </div>
+              </div>
+              <div class="obs-dock-body">
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Bottom Status Bar -->
+        <footer class="obs-status-bar" data-var="--bg_base" title="Docks, Lists, Mixer & Status Bar (--bg_base)">
+          <span class="var-tag">--bg_base</span>
+          <div class="obs-status-item">
+            <span class="obs-status-dot"></span>
+            <span>LIVE: 01:23:45</span>
+          </div>
+          <div class="obs-status-item">
+            <span>REC: 01:23:45</span>
+          </div>
+          <div class="obs-status-item">
+            <span>CPU: 6.9%, 59.92 fps</span>
+          </div>
+          <div class="obs-status-item">
+            <span>Dropped Frames: 0 (0.0%)</span>
+          </div>
+          <div class="obs-status-item">
+            <span>6000 kb/s</span>
+          </div>
+        </footer>
+
+      </div>
+    </section>
+
+    <!-- Theme Inspector & Variable Editor Sidebar -->
+    <aside class="inspector-sidebar">
+      <div class="inspector-header">
+        <div style="margin-bottom: 12px;">
+          <div class="inspector-title">
+            <span>Theme Inspector</span>
+          </div>
+        </div>
+
+        <div class="theme-name-group">
+          <label for="theme-name-input">Theme Name (.ovt)</label>
+          <input type="text" id="theme-name-input" class="theme-name-input" value="CustomStudioTheme" placeholder="e.g. MyOBSTheme">
+        </div>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <div class="inspector-tabs">
+        <button id="tab-selected" class="tab-btn active">🎯 Active Variable</button>
+        <button id="tab-all" class="tab-btn">📑 All Variables</button>
+      </div>
+
+      <!-- Tab Content Area -->
+      <div class="inspector-content">
+
+        <!-- TAB 1 - Selected Variable View -->
+        <div id="view-selected-var">
+          <div class="selected-card">
+            <div class="selected-card-header">
+              <div>
+                <div id="active-name" class="selected-card-title">Buttons & Dock Titlebars</div>
+                <code id="active-key-code" style="font-size: 11px; color: var(--brand-primary);">--button_bg</code>
+              </div>
+            </div>
+            <p id="active-desc" class="selected-card-desc">In OBS, buttons (Start Streaming, Settings, etc.) and Dock Titlebars share this color.</p>
+            
+            <!-- Affects list badges -->
+            <div style="margin-bottom: 14px;">
+              <div style="font-size: 10px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; margin-bottom: 5px;">Affects in OBS:</div>
+              <div id="active-affects-container" style="display: flex; flex-wrap: wrap; gap: 4px;">
+                <!-- Populated by the script -->
+              </div>
+            </div>
+
+            <!-- Color controls for active variable -->
+            <div class="color-control-item" style="border: 1px solid var(--border-app);">
+              <div class="color-control-header">
+                <span class="color-key-label">Color Value</span>
+                <span id="active-diff-badge" style="font-size: 10px; color: var(--brand-accent); font-weight: 600; display: none;">Modified</span>
+              </div>
+              <div class="color-input-wrapper" style="margin-top: 6px;">
+                <input type="color" id="active-color-picker" class="color-picker-input">
+                <input type="text" id="active-color-hex" class="color-hex-input" maxlength="7" spellcheck="false">
+              </div>
+            </div>
+
+            <!-- Quick revert button for this variable if modified -->
+            <button id="btn-revert-var" class="btn btn-sm btn-default" style="margin-top: 10px; width: 100%; justify-content: center; display: none;">
+              Revert Variable to Default
+            </button>
+          </div>
+        </div>
+
+        <!-- TAB 2 - All Variables Navigator View -->
+        <div id="view-all-vars" style="display: none;">
+          <p style="font-size: 11px; color: var(--text-secondary); margin-bottom: 10px;">
+            Core variables defined in <code>Yami.obt</code>. Click any variable to edit:
+          </p>
+          <div id="vars-navigator" class="parts-nav-list">
+            <!-- populated by the script -->
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Sidebar Bottom Action Bar -->
+      <!-- Im getting real sick of SVGs-->
+      <div class="inspector-footer">
+        <button id="sidebar-btn-copy" class="btn btn-default" style="width: 100%; justify-content: center;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+          Copy OVT Code
+        </button>
+        <button id="sidebar-btn-export" class="btn btn-primary" style="width: 100%; justify-content: center;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          Download .ovt File
+        </button>
+      </div>
+
+    </aside>
+
+  </main>
+
+  <!-- Installation Guide Modal -->
+  <div id="modal-guide" class="modal-overlay">
+    <div class="modal-window">
+      <div class="modal-header">
+        <h2>How to Install Your Theme in OBS Studio</h2>
+        <button class="modal-close-btn" data-close="modal-guide">✕</button>
+      </div>
+      <div class="modal-body">
+        
+        <div class="guide-step">
+          <div class="guide-step-num">1</div>
+          <div class="guide-step-content">
+            <h3>Download Your .ovt Theme File</h3>
+            <p>Click the green <strong>"Export Theme (.ovt)"</strong> button. The file will only contain the variables you changed from default Yami.</p>
+          </div>
+        </div>
+
+        <div class="guide-step">
+          <div class="guide-step-num">2</div>
+          <div class="guide-step-content">
+            <h3>Place the File into Your OBS Themes Directory</h3>
+            <p>Copy the downloaded <code>.ovt</code> file directly into your themes folder:</p>
+
+            <div style="margin-top: 8px;">
+              <span style="font-size: 11px; font-weight: 600; color: #fff;">Windows Program Folder:</span>
+              <div class="path-box">
+                <code>C:\Program Files\obs-studio\data\obs-studio\themes\</code>
+                <button class="btn btn-sm btn-default" onclick="copyPath('C:\\Program Files\\obs-studio\\data\\obs-studio\\themes\\')">Copy</button>
+              </div>
+            </div>
+
+            <div style="margin-top: 8px;">
+              <span style="font-size: 11px; font-weight: 600; color: #fff;">macOS (Not Tested):</span>
+              <div class="path-box">
+                <code>~/Library/Application Support/obs-studio/themes/</code>
+                <button class="btn btn-sm btn-default" onclick="copyPath('~/Library/Application Support/obs-studio/themes/')">Copy</button>
+              </div>
+            </div>
+
+            <div style="margin-top: 8px;">
+              <span style="font-size: 11px; font-weight: 600; color: #fff;">Linux (Not Tested):</span>
+              <div class="path-box">
+                <code>~/.config/obs-studio/themes/</code>
+                <button class="btn btn-sm btn-default" onclick="copyPath('~/.config/obs-studio/themes/')">Copy</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="guide-step">
+          <div class="guide-step-num">3</div>
+          <div class="guide-step-content">
+            <h3>Select the Theme in OBS Studio</h3>
+            <p>Open or restart <strong>OBS Studio</strong>, navigate to <strong>Settings &gt; Appearance &gt; Style</strong>, select your new theme from the dropdown list, and click <strong>Apply</strong>!</p>
+          </div>
+        </div>
+        
+        <div class="guide-step">
+          <div class="guide-step-num">4</div>
+          <div class="guide-step-content">
+            <h3>Realise that it's called a style not a theme and you're too lazy to rename</h3>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7vVTu-y2k75ZPW-Co6qmkU8wFPb1KhShEAcDuW-Zcdk2iFALmB_VcdAE&s=10" style="width: 90px; height: auto;"/>
+          </div>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" data-close="modal-guide">Yeah right.</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast-notice">
+    <span id="toast-text">Copied to clipboard!</span>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/theme-data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

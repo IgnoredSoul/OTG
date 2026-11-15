@@ -1,0 +1,574 @@
+/* ==========================================================================
+ * OBS STUDIO UI
+ * ========================================================================== */
+
+/* The main OBS window frame. */
+.obs-window {
+  background-color: var(--bg_window, #1d1f26);
+  color: var(--text, #ffffff);
+  border: 1px solid var(--border_color, #3c404d);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  user-select: none;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  position: relative;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  min-height: 100%;
+}
+
+/* 
+ * Clicking any element with [data-var] selects that variable in the sidebar.
+ * If multiple elements use that same var (like buttons and dock titles), 
+ * they all light up so you know what you're actually changing.
+ */
+[data-var] {
+  position: relative;
+  cursor: pointer;
+  transition: outline 0.12s ease, box-shadow 0.12s ease;
+}
+
+[data-var]:hover {
+  outline: 2px dashed #476bd7 !important;
+  outline-offset: -1px;
+}
+
+/* This class gets slapped on every element linked to the currently selected variable */
+.active-linked-var {
+  outline: 2px solid #476bd7 !important;
+  outline-offset: -1px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2), 0 0 12px rgba(71, 107, 215, 0.45) !important;
+}
+
+/* Little pill showing the variable name on hover */
+.var-tag {
+  position: absolute;
+  top: 3px;
+  right: 6px;
+  background: #284cb8;
+  color: #fff;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 1px 5px;
+  border-radius: 3px;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(-2px);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  z-index: 50;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+[data-var]:hover > .var-tag,
+.active-linked-var > .var-tag {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+ * TOP MENU BAR
+ * ========================================================================== */
+.obs-menu-bar {
+  background-color: var(--bg_window, #1d1f26);
+  color: var(--text, #ffffff);
+  border-bottom: 1px solid var(--border_color, #3c404d);
+  display: flex;
+  align-items: center;
+  padding: 3px 8px;
+  gap: 2px;
+  font-size: 12px;
+  flex-wrap: wrap;
+}
+
+.obs-menu-item {
+  padding: 3px 8px;
+  border-radius: 3px;
+  color: var(--text, #ffffff);
+  transition: background-color 0.12s ease;
+}
+
+.obs-menu-item.active-selection {
+  background-color: var(--primary, #284cb8);
+  color: #ffffff;
+}
+
+.obs-menu-item:hover:not(.active-selection) {
+  background-color: var(--button_bg_hover, #464b59);
+}
+
+/* Main wrapper holding preview and all the docks */
+.obs-workspace {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 6px;
+  padding: 6px;
+  background-color: var(--bg_window, #1d1f26);
+}
+
+/* ==========================================================================
+ * PREVIEW CANVAS
+ * ========================================================================== */
+.obs-preview-container {
+  background-color: var(--bg_preview, #13141a);
+  border: 1px solid var(--border_color, #3c404d);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  min-height: 250px;
+  overflow: hidden;
+}
+
+.obs-preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 10px;
+  background-color: rgba(0, 0, 0, 0.35);
+  font-size: 11px;
+  color: var(--text, #ffffff);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.obs-preview-viewport {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  background-image: 
+    radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 16px 16px;
+  min-height: 210px;
+}
+
+/* Borderless canvas screen */
+.obs-screen-canvas {
+  width: 100%;
+  max-width: 440px;
+  aspect-ratio: 16 / 9;
+  background: linear-gradient(135deg, #0b0d12 0%, #151921 100%);
+  border: none;
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+}
+
+.mock-game-bg {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 70% 30%, rgba(71, 107, 215, 0.25) 0%, transparent 50%),
+    radial-gradient(circle at 20% 80%, rgba(227, 59, 87, 0.15) 0%, transparent 40%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mock-game-title {
+  text-align: center;
+  color: var(--text, #ffffff);
+  font-weight: 700;
+  font-size: 14px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+  letter-spacing: 1px;
+}
+
+.mock-subtext {
+  font-size: 10px;
+  color: var(--text, #ffffff);
+  opacity: 0.7;
+  font-weight: 400;
+  margin-top: 3px;
+  text-align: center;
+}
+
+/* ==========================================================================
+ * DOCKS LAYOUT
+ * ========================================================================== */
+.obs-docks-container {
+  display: grid;
+  grid-template-columns: 1.1fr 1.3fr 1.4fr 1.1fr 1.2fr;
+  gap: 6px;
+  background-color: var(--bg_window, #1d1f26);
+}
+
+.secondary-docks {
+  grid-template-columns: 1.1fr 1.3fr 1.2fr 1.2fr 1.1fr;
+  margin-top: 2px;
+  flex: 1;
+}
+
+@media (max-width: 1000px) {
+  .obs-docks-container,
+  .secondary-docks {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .obs-docks-container,
+  .secondary-docks {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Base dock container styling */
+.obs-dock {
+  background-color: var(--bg_base, #272a33);
+  color: var(--text, #ffffff);
+  border: 1px solid var(--border_color, #3c404d);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  min-height: 190px;
+  overflow: hidden;
+}
+
+/* 
+ * Dock Titlebars. Yami.obt uses var(--button_bg).
+ * That means dock headers and buttons share the same color.
+ */
+.obs-dock-titlebar {
+  background-color: var(--button_bg, #3c404d);
+  color: var(--text, #ffffff);
+  padding: 5px 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.3px;
+}
+
+.obs-dock-title-icons {
+  display: flex;
+  gap: 5px;
+  color: var(--text, #ffffff);
+  opacity: 0.75;
+  font-size: 10px;
+}
+
+.obs-dock-body {
+  flex: 1;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background-color: var(--bg_base, #272a33);
+}
+
+/* ==========================================================================
+ * LISTS (Scenes & Sources)
+ * In OBS, lists inherit --bg_base and --text.
+ * Selected item uses --primary.
+ * ========================================================================== */
+.obs-list {
+  background-color: var(--bg_base, #272a33);
+  color: var(--text, #ffffff);
+  border: none;
+  border-radius: 3px;
+  flex: 1;
+  padding: 3px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow-y: auto;
+}
+
+.obs-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 6px;
+  border-radius: 3px;
+  font-size: 11px;
+  cursor: pointer;
+  color: var(--text, #ffffff);
+  border: 1px solid transparent;
+}
+
+.obs-list-item:hover:not(.selected) {
+  background-color: #464b59;
+}
+
+.obs-list-item.selected {
+  background-color: var(--primary, #284cb8);
+  border-color: var(--primary_light, #476bd7);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.obs-list-item-icons {
+  display: flex;
+  gap: 5px;
+  opacity: 0.8;
+  font-size: 11px;
+}
+
+/* 
+ * Small tool buttons under scenes/sources.
+ */
+.obs-toolbar-row {
+  display: flex;
+  gap: 3px;
+  border-top: 1px solid #464b59;
+  padding-top: 4px;
+}
+
+.obs-tool-btn {
+  background-color: transparent;
+  color: var(--text, #ffffff);
+  border: 1px solid transparent;
+  border-radius: 3px;
+  padding: 3px 6px;
+  font-size: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.12s ease;
+}
+
+.obs-tool-btn:hover {
+  background-color: var(--button_bg_hover, #464b59);
+}
+
+/* ==========================================================================
+ * AUDIO MIXER
+ * Mixer channels ARE the one exception inside docks that actually use --border_color in OBS. DONT FUCKING FORGET.
+ * ========================================================================== */
+.obs-audio-channel {
+  background-color: var(--bg_base, #272a33);
+  color: var(--text, #ffffff);
+  border: 1px solid var(--border_color, #3c404d);
+  border-radius: 3px;
+  padding: 5px 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.obs-audio-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text, #ffffff);
+}
+
+.obs-audio-meter-track {
+  height: 6px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.obs-audio-meter-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #17641e 0%, #25a231 60%, #e3af24 85%, #c01c37 100%);
+  border-radius: 2px;
+}
+
+.obs-slider-container {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.obs-fader-track {
+  flex: 1;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 2px;
+  position: relative;
+}
+
+.obs-fader-handle {
+  position: absolute;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  background-color: var(--primary_light, #476bd7);
+  border: 1px solid #ffffff;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.obs-audio-btn {
+  background: transparent;
+  border: none;
+  color: var(--text, #ffffff);
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 2px;
+  font-size: 10px;
+  transition: background-color 0.12s ease;
+}
+
+.obs-audio-btn:hover {
+  background-color: var(--button_bg_hover, #464b59);
+}
+
+/* ==========================================================================
+ * SCENE TRANSITIONS
+ * ========================================================================== */
+.obs-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.obs-form-label {
+  font-size: 10px;
+  color: var(--text, #ffffff);
+}
+
+/* 
+ * Dropdowns and inputs in OBS use their own subtle input border, NOT --border_color.
+ * Though they do have it when the dropdown is active. Wild.
+ */
+.obs-select, .obs-input {
+  background-color: #323540;
+  color: var(--text, #ffffff);
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 3px;
+  padding: 4px 6px;
+  font-size: 11px;
+  outline: none;
+}
+
+/* ==========================================================================
+ * CONTROL BUTTONS
+ * ========================================================================== */
+.obs-controls-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.obs-btn {
+  background-color: var(--button_bg, #3c404d);
+  color: var(--text, #ffffff);
+  border: 1px solid var(--button_bg, #3c404d);
+  border-radius: 3px;
+  padding: 5px 8px;
+  font-size: 11px;
+  font-weight: 500;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.1s ease;
+}
+
+.obs-btn:hover {
+  background-color: var(--button_bg_hover, #464b59);
+}
+
+.obs-btn:active {
+  background-color: var(--button_bg_down, #1d1f26);
+}
+
+.obs-btn-primary {
+  font-weight: 600;
+}
+
+.obs-btn-sm {
+  padding: 3px 6px;
+  font-size: 10px;
+}
+
+/* ==========================================================================
+ * SECONDARY DOCKS: STATS, CHAT, ACTIVITY, TWITCH STATS
+ * web docks can't be styled 'cause they're WEB BASED
+ * ========================================================================== */
+.obs-stats-table {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 10px;
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.stat-row strong {
+  font-family: monospace;
+}
+
+.chat-message {
+  line-height: 1.3;
+}
+
+.chat-user {
+  font-weight: 700;
+}
+
+.chat-text {
+  color: var(--text, #ffffff);
+}
+
+.activity-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  padding: 3px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.act-icon {
+  font-size: 12px;
+}
+
+/* ==========================================================================
+ * STATUS BAR
+ * ========================================================================== */
+.obs-status-bar {
+  background-color: var(--bg_base, #272a33);
+  color: var(--text, #ffffff);
+  border-top: 1px solid var(--border_color, #3c404d);
+  padding: 4px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.obs-status-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.obs-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #c01c37;
+  display: inline-block;
+  animation: pulse-dot 2s infinite ease-in-out;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}

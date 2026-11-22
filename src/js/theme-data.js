@@ -6,10 +6,13 @@ const DEFAULT_YAMI_VARS = {
   // Docks, Scene/Source lists, Audio Mixer & Status Bar
   "--bg_base": "#272a33",
 
+  // Dock Titlebars (uses --grey5 in Yami.obt)
+  "--grey5": "#323540",
+
   // The stream preview canvas backdrop
   "--bg_preview": "#13141a",
 
-  // Buttons AND Dock Titlebars.
+  // Action buttons (Start Streaming, Recording, Settings, etc.)
   "--button_bg": "#3c404d",
 
   // Button hover, which is the dock tools and the controls buttons? Why??
@@ -50,10 +53,17 @@ const SIMPLE_MODE_VARS = [
     default: "#272a33"
   },
   {
+    key: "--grey5",
+    name: "Dock Titlebars",
+    description: "Background color of all dock titlebars across OBS Studio (uses --grey5 in Yami).",
+    affects: ["Dock Titlebars"],
+    default: "#323540"
+  },
+  {
     key: "--button_bg",
-    name: "Buttons & Dock Titlebars",
-    description: "In OBS, action buttons (Start Streaming, Settings, etc.) and Dock Titlebars share this color. Also affects transition add icon and Stats reset button.",
-    affects: ["Action Buttons", "Dock Header Bars", "Transition Add Icon", "Stats Reset Button"],
+    name: "Action Buttons",
+    description: "In OBS, action buttons (Start Streaming, Settings, etc.) use this color. Also affects transition add icon and Stats reset button. (Dock titlebars use --grey5 #323540, not button_bg).",
+    affects: ["Action Buttons", "Transition Add Icon", "Stats Reset Button"],
     default: "#3c404d"
   },
   {

@@ -58,9 +58,7 @@
         </nav>
 
         <!-- OBS Workspace Body -->
-        <div class="obs-workspace" data-var="--bg_window" title="Window & Menu Background (--bg_window)">
-          <span class="var-tag">--bg_window</span>
-
+        <div class="obs-workspace">
           <!-- Preview Canvas -->
           <div class="obs-preview-container" data-var="--bg_preview" title="Preview Canvas Backdrop (--bg_preview)">
             <span class="var-tag">--bg_preview</span>
@@ -86,8 +84,8 @@
 
             <!-- Scenes Dock -->
             <div class="obs-dock" data-var="--bg_base" title="Dock & Panels Background (--bg_base)">
-              <div class="obs-dock-titlebar" data-var="--button_bg" title="Buttons & Dock Titlebars (--button_bg)">
-                <span class="var-tag">--button_bg</span>
+              <div class="obs-dock-titlebar" data-var="--grey5" title="Dock Titlebars (--grey5)">
+                <span class="var-tag">--grey5</span>
                 <span>Scenes</span>
                 <div class="obs-dock-title-icons">
                   <span>🗗</span>
@@ -118,8 +116,8 @@
 
             <!-- Sources Dock -->
             <div class="obs-dock" data-var="--bg_base" title="Dock & Panels Background (--bg_base)">
-              <div class="obs-dock-titlebar" data-var="--button_bg" title="Buttons & Dock Titlebars (--button_bg)">
-                <span class="var-tag">--button_bg</span>
+              <div class="obs-dock-titlebar" data-var="--grey5" title="Dock Titlebars (--grey5)">
+                <span class="var-tag">--grey5</span>
                 <span>Sources</span>
                 <div class="obs-dock-title-icons">
                   <span>🗗</span>
@@ -155,18 +153,17 @@
 
             <!-- Audio Mixer Dock -->
             <div class="obs-dock" data-var="--bg_base" title="Dock & Panels Background (--bg_base)">
-              <div class="obs-dock-titlebar" data-var="--button_bg" title="Buttons & Dock Titlebars (--button_bg)">
-                <span class="var-tag">--button_bg</span>
+              <div class="obs-dock-titlebar" data-var="--grey5" title="Dock Titlebars (--grey5)">
+                <span class="var-tag">--grey5</span>
                 <span>Audio Mixer</span>
                 <div class="obs-dock-title-icons">
                   <span>🗗</span>
                 </div>
               </div>
               <div class="obs-dock-body" data-var="--bg_base" title="Dock & Panels Background (--bg_base)">
-                <span class="var-tag">--bg_base</span>
                 
                 <!-- Desktop Audio Channel -->
-                <div class="obs-audio-channel" data-var="--bg_base">
+                <div class="obs-audio-channel" style="background-color: #323540">
                   <div class="obs-audio-label-row">
                     <span>Desktop Audio</span>
                     <span>-4.2 dB</span>
@@ -184,7 +181,7 @@
                 </div>
 
                 <!-- Mic Audio Channel -->
-                <div class="obs-audio-channel" data-var="--bg_base">
+                <div class="obs-audio-channel" style="background-color: #323540">
                   <div class="obs-audio-label-row">
                     <span>Mic/Aux Audio</span>
                     <span>-12.0 dB</span>
@@ -206,8 +203,8 @@
 
             <!-- Scene Transitions Dock -->
             <div class="obs-dock" data-var="--bg_base" title="Dock & Panels Background (--bg_base)">
-              <div class="obs-dock-titlebar" data-var="--button_bg" title="Buttons & Dock Titlebars (--button_bg)">
-                <span class="var-tag">--button_bg</span>
+              <div class="obs-dock-titlebar" data-var="--grey5" title="Dock Titlebars (--grey5)">
+                <span class="var-tag">--grey5</span>
                 <span>Scene Transitions</span>
                 <div class="obs-dock-title-icons">
                   <span>🗗</span>
@@ -234,15 +231,14 @@
 
             <!-- Controls Dock -->
             <div class="obs-dock" data-var="--bg_base" title="Dock & Panels Background (--bg_base)">
-              <div class="obs-dock-titlebar" data-var="--button_bg" title="Buttons & Dock Titlebars (--button_bg)">
-                <span class="var-tag">--button_bg</span>
+              <div class="obs-dock-titlebar" data-var="--grey5" title="Dock Titlebars (--grey5)">
+                <span class="var-tag">--grey5</span>
                 <span>Controls</span>
                 <div class="obs-dock-title-icons">
                   <span>🗗</span>
                 </div>
               </div>
               <div class="obs-dock-body" data-var="--bg_base" title="Dock & Panels Background (--bg_base)">
-                <span class="var-tag">--bg_base</span>
                 <div class="obs-controls-stack" data-var="--button_bg" title="Buttons & Dock Titlebars (--button_bg)">
                   <span class="var-tag">--button_bg</span>
                   <button class="obs-btn obs-btn-primary">Start Streaming</button>
@@ -262,8 +258,8 @@
 
             <!-- Stats Dock -->
             <div class="obs-dock" data-var="--bg_base" title="Dock & Panels Background (--bg_base)">
-              <div class="obs-dock-titlebar" data-var="--button_bg" title="Buttons & Dock Titlebars (--button_bg)">
-                <span class="var-tag">--button_bg</span>
+              <div class="obs-dock-titlebar" data-var="--grey5" title="Dock Titlebars (--grey5)">
+                <span class="var-tag">--grey5</span>
                 <span>Stats</span>
                 <div class="obs-dock-title-icons">
                   <span>🗗</span>
@@ -284,57 +280,57 @@
             <!-- The rest of these docks can't be modified, only the dock bar 'cause fuckass web-based docks -->
             <!-- Stream Information Dock -->
             <div class="obs-dock">
-              <div class="obs-dock-titlebar" data-var="--button_bg" title="Buttons & Dock Titlebars (--button_bg)">
-                <span class="var-tag">--button_bg</span>
+              <div class="obs-dock-titlebar" data-var="--grey5" title="Dock Titlebars (--grey5)">
+                <span class="var-tag">--grey5</span>
                 <span>Stream Information</span>
                 <div class="obs-dock-title-icons">
                   <span>🗗</span>
                   <span>✕</span>
                 </div>
               </div>
-              <div class="obs-dock-body">
+              <div class="obs-dock-body" style="background-color: #272a33">
               </div>
             </div>
 
             <!-- Twitch Chat Dock -->
             <div class="obs-dock">
-              <div class="obs-dock-titlebar" data-var="--button_bg" title="Buttons & Dock Titlebars (--button_bg)">
-                <span class="var-tag">--button_bg</span>
+              <div class="obs-dock-titlebar" data-var="--grey5" title="Dock Titlebars (--grey5)">
+                <span class="var-tag">--grey5</span>
                 <span>Twitch Chat</span>
                 <div class="obs-dock-title-icons">
                   <span>🗗</span>
                   <span>✕</span>
                 </div>
               </div>
-              <div class="obs-dock-body">
+              <div class="obs-dock-body" style="background-color: #272a33">
               </div>
             </div>
 
             <!-- Twitch Activity Feed Dock -->
             <div class="obs-dock">
-              <div class="obs-dock-titlebar" data-var="--button_bg" title="Buttons & Dock Titlebars (--button_bg)">
-                <span class="var-tag">--button_bg</span>
+              <div class="obs-dock-titlebar" data-var="--grey5" title="Dock Titlebars (--grey5)">
+                <span class="var-tag">--grey5</span>
                 <span>Twitch Activity Feed</span>
                 <div class="obs-dock-title-icons">
                   <span>🗗</span>
                   <span>✕</span>
                 </div>
               </div>
-              <div class="obs-dock-body">
+              <div class="obs-dock-body" style="background-color: #272a33">
               </div>
             </div>
 
             <!-- Twitch Stats Dock -->
             <div class="obs-dock">
-              <div class="obs-dock-titlebar" data-var="--button_bg" title="Buttons & Dock Titlebars (--button_bg)">
-                <span class="var-tag">--button_bg</span>
+              <div class="obs-dock-titlebar" data-var="--grey5" title="Dock Titlebars (--grey5)">
+                <span class="var-tag">--grey5</span>
                 <span>Twitch Stats</span>
                 <div class="obs-dock-title-icons">
                   <span>🗗</span>
                   <span>✕</span>
                 </div>
               </div>
-              <div class="obs-dock-body">
+              <div class="obs-dock-body" style="background-color: #272a33">
               </div>
             </div>
 
@@ -470,7 +466,7 @@
           <div class="guide-step-num">1</div>
           <div class="guide-step-content">
             <h3>Download Your .ovt Theme File</h3>
-            <p>Click the green <strong>"Export Theme (.ovt)"</strong> button. The file will only contain the variables you changed from default Yami.</p>
+            <p>Click the green <b>"Export Theme (.ovt)"</b> button. The file will only contain the variables you changed from default Yami.</p>
           </div>
         </div>
 
@@ -511,7 +507,7 @@
           <div class="guide-step-num">3</div>
           <div class="guide-step-content">
             <h3>Select the Theme in OBS Studio</h3>
-            <p>Open or restart <strong>OBS Studio</strong>, navigate to <strong>Settings &gt; Appearance &gt; Style</strong>, select your new theme from the dropdown list, and click <strong>Apply</strong>!</p>
+            <p>Navigate to <b>Settings > Appearance > Style</b>, select your new theme from the dropdown list, and click <b>Apply</b>!</p>
           </div>
         </div>
         
